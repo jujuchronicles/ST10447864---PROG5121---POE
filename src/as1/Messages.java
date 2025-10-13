@@ -6,6 +6,7 @@ package as1;
 
 import java.util.regex.Pattern;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,16 +42,11 @@ public class Messages {
     }
     
      public static  void print(String text,String cell, String hash, String choose, String ID, int messageCounter){
-       System.out.println(text);
-       System.out.println(ID);
-       System.out.println(hash);
-       System.out.println(cell);
-       System.out.println(messageCounter);
-       System.out.println(choose);
-             
-               }
+       JOptionPane.showMessageDialog(null, text + "\n" + ID + "\n" + hash + "\n" + cell + "\n" + messageCounter + "\n" + choose);
+       
+     }
      public static void returnTotalMessages(int total){
-         System.out.println("Total Number of Messages: "+ total);
+         JOptionPane.showMessageDialog(null, "Total Number of Messages: "+ total);
      }
    public static String createHash(String ID, int messageCounter, String text)
     {

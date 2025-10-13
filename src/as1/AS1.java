@@ -1,6 +1,7 @@
 
 package as1;
-import java.util.Scanner;
+import javax.swing.JOptionPane;
+
 //JSON File imports from chatgpt, Require more files downloaded to Work
 /*import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
@@ -12,61 +13,55 @@ public class AS1 {
 
     public static void main(String[] args) 
     {
-       Scanner scan = new Scanner(System.in);
+       
         String username, password, confirmUser, confirmPassword,phone;
         String text = "", ID, choose , cell = "", hash;
         int track=0,messageCounter=0, choice;
         
-        System.out.print("Enter Userame: ");
-        username = scan.nextLine();
-        System.out.print("Enter Password: ");
-        password = scan.nextLine();
+        
+        username = JOptionPane.showInputDialog("Enter Userame:");
+        password = JOptionPane.showInputDialog("Enter Password:");
       
        
-        System.out.print("Enter phone number: ");
-        phone = scan.nextLine();
+       
+        phone = JOptionPane.showInputDialog("Enter phone number:");
         
         
         System.out.println(Login.registerUser(Login.checkUsername(username), Login.checkPassword(password)));
         if(Login.checkUsername(username) && Login.checkPassword(password)){
             System.out.println("Log in ");
  
-            System.out.print("Username: ");
-            confirmUser = scan.nextLine();
-            System.out.print("Password: ");
-            confirmPassword = scan.nextLine();
+            confirmUser = JOptionPane.showInputDialog("Userame:");
+            confirmPassword = JOptionPane.showInputDialog("Password:");
+            
             String isLogged = Login.returnLoginStatus(Login.loginUser(username, password, confirmUser, confirmPassword));
-            System.out.println(isLogged);
+            JOptionPane.showMessageDialog(null, isLogged);
+
             if(isLogged.compareTo("Login attempt Successful")==0){
-                 System.out.println("Welcome : QuickChatApp");
-                 System.out.println("1. Send Message"); System.out.println("2. POE Part 3");System.out.println("3. Exist"); 
-                 int quickChat = scan.nextInt();
+                JOptionPane.showMessageDialog(null, "Welcome : QuickChatApp");
+                String[] options = {"Send Message", "POE Part 3", " Exit"};
+                
+                 int quickChat = JOptionPane.showOptionDialog( null,"Choose an option:", "Custom Dialog", JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options,options[0]);
+
                  switch(quickChat){
-                     case 1:
-                         while(quickChat != 111)   
-                                       {
-                                         System.out.println("How many messages you want? ");
-                                         int many = scan.nextInt();
+                     case 0:
+                         while(quickChat != 1)   
+                                       {  
+                                         int many = Integer.parseInt(JOptionPane.showInputDialog(null, "How many messages you want?"));
                                          for(int man=0;man<many;){
-                                          System.out.println("Recipient Cell Number: ");
-                                         cell = scan.next(); 
-                                         scan.nextLine();
-                                         System.out.println("Message: ");
-                                         text = scan.nextLine();   
+                                                 cell = JOptionPane.showInputDialog("Recipient Cell Number:"); 
+                                                text = JOptionPane.showInputDialog("Enter Message:");  
                                          
-                                          
-                                         System.out.println("1. Send"); 
-                                         System.out.println("2. Save");
-                                         System.out.println("3. Delete");  
-                                         choice = scan.nextInt();  
+                                          String[] options2 = {"Send", "Save", " Delete"};
+                                         choice = JOptionPane.showOptionDialog( null,"Choose an option:", "Custom Dialog", JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options2,options2[0]);  
                                          
-                                         if(choice==1 ||choice ==2){
+                                         if(choice==0 ||choice ==1){
                                             
                                              ID= Messages.generateRandomId();
                                              
                                              if(Messages.checkMessageID(ID) && Messages.checkRecipientCell(cell) && Messages.checkMessage(text)){
                                                  hash = Messages.createHash(ID, track + 1, text);
-                                                 if(choice == 1){
+                                                 if(choice == 0){
                                                      choose = "Sent Message";
                                                  }
                                                  else{
@@ -98,21 +93,26 @@ public class AS1 {
                                                            catch (IOException e) {e.printStackTrace();} */    
                                              }
                                              else{
-                                                 System.out.println("Message or Cell Number is not Valid"); 
+                                                 JOptionPane.showMessageDialog(null, "Message or Cell Number is not Valid");
                                              }
                                          }else{
-                                             System.out.println("Deleted message"); 
+                                             JOptionPane.showMessageDialog(null, "Deleted message");
+                                              
                                          }   
                                      }
                                       
-                                          System.out.println("1. Send More Messages"); System.out.println("111. Exit"); 
-                                          quickChat = scan.nextInt();
+                                          String[] options3 = {"Send More Messages", " Exit"};
+                
+                                         quickChat = JOptionPane.showOptionDialog( null,"Choose an option:", "Custom Dialog", JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options3,options3[0]);
+
+
                                        }
                     break;
-                     case 2:
-                         System.out.println("POE Part 3 activity, not Available");
+                     case 1:
+                          JOptionPane.showMessageDialog(null, "POE Part 3 activity, not Available"); 
                          break;
-                     case 3:
+                     case 2:
+                            JOptionPane.showMessageDialog(null, "Thank you"); 
                             System.exit(0);
                      break;
                  }
