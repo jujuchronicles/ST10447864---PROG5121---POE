@@ -33,14 +33,13 @@ public class Messages {
              default -> "Deleted";
          };
     }  
-      public static String FirstWord(String text) {
+      public static String FirstLast(String text) {
         String[] words = text.trim().split("\\s+");
-        return words[0];
+        String[] words1 = text.trim().split("\\s+");
+      
+        return words[0] + words1[words1.length - 1];
     }
-    public static String LastWord(String text) {
-        String[] words = text.trim().split("\\s+");
-        return words[words.length - 1];
-    } 
+    
      public static  void print(String text,String cell, String hash, String choose, String ID, int messageCounter){
        System.out.println(text);
        System.out.println(ID);
@@ -60,7 +59,7 @@ public class Messages {
             adding = adding + ID.charAt(count);
         }
         
-        return adding + ":" + messageCounter + ":" + Messages.FirstWord(text) + Messages.LastWord(text);
+        return adding + ":" + messageCounter + ":" + Messages.FirstLast(text);
     }
      
      

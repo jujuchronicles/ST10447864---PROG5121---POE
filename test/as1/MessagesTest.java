@@ -116,8 +116,8 @@ public class MessagesTest {
     public void testFirstWord() {
         System.out.println("FirstWord");
         String text = "Hi Mike, can you join us for Dinner Tonight";
-        String expResult = "Hi";
-        String result = Messages.FirstWord(text);
+        String expResult = "HiTonight";
+        String result = Messages.FirstLast(text);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -129,9 +129,9 @@ public class MessagesTest {
     @Test
     public void testLastWord() {
         System.out.println("LastWord");
-        String text = "Hi Mike, can you join us for Dinner Tonight";
-        String expResult = "Tonight";
-        String result = Messages.LastWord(text);
+        String text = "Hi Keagun, Did you get the Payment";
+        String expResult = "HiPayment";
+        String result = Messages.FirstLast(text);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

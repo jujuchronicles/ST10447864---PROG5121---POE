@@ -1,6 +1,7 @@
 
 package as1;
 import java.util.Scanner;
+//JSON File imports from chatgpt, Require more files downloaded to Work
 /*import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
@@ -37,14 +38,17 @@ public class AS1 {
             String isLogged = Login.returnLoginStatus(Login.loginUser(username, password, confirmUser, confirmPassword));
             System.out.println(isLogged);
             if(isLogged.compareTo("Login attempt Successful")==0){
-                 System.out.println("Welcome : QuickChat");
-                 System.out.println("1. Send Message"); System.out.println("2. Part 3");System.out.println("3. Exist"); 
+                 System.out.println("Welcome : QuickChatApp");
+                 System.out.println("1. Send Message"); System.out.println("2. POE Part 3");System.out.println("3. Exist"); 
                  int quickChat = scan.nextInt();
                  switch(quickChat){
                      case 1:
                          while(quickChat != 111)   
                                        {
-                                         System.out.println("Recipient Cell Number: ");
+                                         System.out.println("How many messages you want? ");
+                                         int many = scan.nextInt();
+                                         for(int man=0;man<many;){
+                                          System.out.println("Recipient Cell Number: ");
                                          cell = scan.next(); 
                                          scan.nextLine();
                                          System.out.println("Message: ");
@@ -71,6 +75,7 @@ public class AS1 {
                                                  messageCounter = messageCounter +1;
                                                  Messages.returnTotalMessages(messageCounter);
                                                 Messages.print(text, cell, hash, choose, ID, messageCounter);
+                                                man = man + 1;
                                               //JSON File COde, Gives Error (due to missing files) so Saved as a Comment
                                                 /*List<Map<String, Object>> messages = new ArrayList<>();
 
@@ -97,9 +102,10 @@ public class AS1 {
                                              }
                                          }else{
                                              System.out.println("Deleted message"); 
-                                         }
-                                         
-                                          System.out.println("1. Send Another Message"); System.out.println("111. Exist"); 
+                                         }   
+                                     }
+                                      
+                                          System.out.println("1. Send More Messages"); System.out.println("111. Exit"); 
                                           quickChat = scan.nextInt();
                                        }
                     break;
