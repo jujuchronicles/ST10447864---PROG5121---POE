@@ -29,13 +29,16 @@ public class AS1 {
           ArrayList<Integer> counterList = new ArrayList<>();
           
         
-      /*  username = JOptionPane.showInputDialog("Enter Userame:");
+        username = JOptionPane.showInputDialog("Enter Userame:");
         password = JOptionPane.showInputDialog("Enter Password:");
       
        
        
         phone = JOptionPane.showInputDialog("Enter phone number:");
-        
+        if(!Login.isValidCellPhone(phone)){
+          JOptionPane.showMessageDialog(null, "Cell Number is not Format Correct");
+          System.exit(0);
+          }
         
         // Login If register success
         if(Login.checkUsername(username) && Login.checkPassword(password)){
@@ -47,7 +50,7 @@ public class AS1 {
             String isLogged = Login.returnLoginStatus(Login.loginUser(username, password, confirmUser, confirmPassword));
             JOptionPane.showMessageDialog(null, isLogged);
 
-            if(isLogged.compareTo("Login attempt Successful")==0){*/
+            if(isLogged.compareTo("Login attempt Successful")==0){
                 JOptionPane.showMessageDialog(null, "Welcome : QuickChatApp");
                 String[] options = {"Send Message", "Report", " Exit"};
                 
@@ -203,7 +206,7 @@ public class AS1 {
                  }
                  quickChat = JOptionPane.showOptionDialog( null,"Choose an option:", "Custom Dialog", JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options,options[0]);
             }
-    }
+    }}}
            // ✅ WRITE messages to JSON file
     public static void writeMessagesToJSON(String filepath, ArrayList<Message> messages) {
         JSONArray jsonArray = new JSONArray();
